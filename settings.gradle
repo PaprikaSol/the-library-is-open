@@ -1,19 +1,56 @@
 pluginManagement {
+    // We need it to get versions
+    apply from: "config/dependencies.gradle"
+
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
+
+    plugins {
+
+        /**
+         * You should use `apply false` in the top-level build.gradle file
+         * to add a Gradle plugin as a build dependency, but not apply it to the
+         * current (root) project. You should not use `apply false` in sub-projects.
+         * For more information, see
+         * Applying external plugins with same version to subprojects.
+         */
+
+        id "org.jetbrains.kotlin.plugin.parcelize" version "${kotlin_version}" apply false
+
+        // https://kotlinlang.org/docs/kapt.html
+        id "org.jetbrains.kotlin.kapt" version versions.kotlin apply false
+
+        id 'dagger.hilt.android.plugin' version versions.hilt apply false
+
+        id 'org.jetbrains.kotlin.jvm' version '1.8.20'
+    }
+
+
+    resolutionStrategy {
+        eachPlugin {
+            // fix for missing plugin hilt
+            // probably check https://github.com/google/dagger/issues/2774
+            if (requested.id.id == 'dagger.hilt.android.plugin') {
+                useModule("com.google.dagger:hilt-android-gradle-plugin:$versions.hilt")
+            }
+        }
+    }
+
+
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' } //We need this here for MPAndroid Chart library
     }
 }
-
 rootProject.name = "Library App"
 include ':app'
-include ':data'
 include ':domain'
+include ':data'

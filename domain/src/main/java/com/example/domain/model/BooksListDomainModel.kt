@@ -1,6 +1,6 @@
 package com.example.domain.model
 
 data class BooksListDomainModel(
-    val nextPage: Int?,
+    val nextPage: String?,
     val booksList: List<BookDomainModel>
 )
