@@ -1,0 +1,42 @@
+// Configuration for generating apk file
+ext.configuration = [
+        env            : "DEV",
+        major          : 1,
+        minor          : 0,
+        build          : 12,
+        build_increment: 0,
+        beta_code      : 0, // for cases to the store that we want to keep the same version
+        app_name       : 'the-library-is-open',
+        feature_code   : 'Main',
+        sha            : 'git rev-parse --verify --short HEAD'.execute().text.trim(),
+
+        /**
+         * logger levels : see in the common module Logger class
+         * LOG_LEVEL_VERBOSE = 5
+         * LOG_LEVEL_DEBUG = 4
+         * LOG_LEVEL_INFO = 3T
+         * LOG_LEVEL_WARN = 2
+         * LOG_LEVEL_ERROR = 1
+         * LOG_LEVEL_OFF = 10 // greater than the 5
+         */
+        logger_config_debug     : 4,
+        logger_config_release   : 10
+]
+
+// this method is used to return version name
+ext.calculateVersionName = {
+    return "${configuration.major}.${configuration.minor}.${configuration.build}-${configuration.build_increment}_${configuration.sha}_${configuration.env}"
+}
+
+// this method is used to return version code
+ext.calculateVersionCode = {
+    println "----------------------"
+    println "Version calculation:"
+    println "major=${(configuration.major * 1000000)}"
+    println "minor=${(configuration.minor * 10000)}"
+    println "build=${(configuration.build * 100)}"
+    println "beta code=${(configuration.beta_code)}"
+    println "----------------------"
+
+    return (configuration.major * 1000000) + (configuration.minor * 10000) + (configuration.build * 100) + configuration.beta_code
+}

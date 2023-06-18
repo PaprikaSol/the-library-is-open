@@ -1,0 +1,83 @@
+// Versions and dependencies file
+//
+// It is preferred (if possible) to add a reference for each version
+//
+
+
+ext.versions = [
+        min_sdk              : 23,
+        compile_sdk          : 33,
+        target_sdk           : 33,
+        build_tools    : '30.0.2',
+
+        // replace with the latest (stable) version: https://github.com/JetBrains/kotlin/releases/latest
+        // https://kotlinlang.org/docs/releases.html#release-details
+        kotlin               : "${kotlin_version}",
+        java                 : JavaVersion.VERSION_11,
+
+        // https://developer.android.com/studio/build/multidex
+        multidex             : '2.0.1',
+
+        // https://developer.android.com/studio/releases/gradle-plugin?buildsystem=ndk-bu   ild#7-1-0
+        //  Note: 7.1.0 needs min 7.2 gradle
+//        gradle_plugin        : '7.2.2',
+
+        // https://github.com/Kotlin/kotlinx.coroutines
+        // https://kotlinlang.org/docs/kmm-concurrency-and-coroutines.html#coroutines
+        coroutines           : '1.6.4',
+
+        // https://developer.android.com/jetpack/androidx/releases/core
+        android_core         : '1.7.0',
+
+        // https://developer.android.com/jetpack/androidx/releases/appcompat
+        app_compat           : '1.6.1',
+
+        // https://github.com/material-components/material-components-android/releases
+        material             : '1.4.0',
+
+        // Hilt - https://dagger.dev/hilt/gradle-setup
+        hilt                 : '2.42',
+
+        constraintlayout     : '2.1.4',
+
+        // https://github.com/square/retrofit
+        retrofit             : '2.9.0',
+
+        java_inject          : '1',
+
+        nav_version          : '2.5.3',
+]
+
+
+ext.libraries = [
+        kotlin_gradle_plugin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+
+        android_core_ktx            : "androidx.core:core-ktx:$versions.android_core",
+        app_compat                  : "androidx.appcompat:appcompat:$versions.app_compat",
+
+        multidex                    : "androidx.multidex:multidex:$versions.multidex",
+
+        material                    : "com.google.android.material:material:$versions.material",
+
+        // Kotlin coroutines - https://github.com/Kotlin/kotlinx.coroutines
+        kotlinx_coroutines_core     : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+        kotlinx_coroutines_android  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+
+        // Hilt -  https://dagger.dev/hilt/gradle-setup
+        // https://developer.android.com/training/dependency-injection/hilt-android
+        hilt_android                : "com.google.dagger:hilt-android:$versions.hilt",
+        hilt_kapt                   : "com.google.dagger:hilt-compiler:$versions.hilt",
+        // Injection for non-android modules
+        javax_inject                : "javax.inject:javax.inject:$versions.java_inject",
+
+        retrofit                    : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofit_json               : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+
+
+        /** Navigation lib - https://developer.android.com/guide/navigation/navigation-getting-started **/
+        navigation_fragment         : "androidx.navigation:navigation-fragment-ktx:$versions.nav_version",
+
+        navigation_ui               : "androidx.navigation:navigation-ui-ktx:$versions.nav_version",
+
+        constraintlayout            : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+]

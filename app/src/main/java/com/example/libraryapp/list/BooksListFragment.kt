@@ -8,7 +8,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.libraryapp.R
+import com.example.libraryapp.app.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
