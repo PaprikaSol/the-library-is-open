@@ -1,7 +1,8 @@
 package com.example.domain.repository
 
 import com.example.domain.model.BooksListDomainModel
+import kotlinx.coroutines.flow.Flow
 
 interface BooksRepository {
-    suspend fun getBooksList(page: String): BooksListDomainModel
+    fun getBooksList(page: String): Flow<BooksListDomainModel>
 }
