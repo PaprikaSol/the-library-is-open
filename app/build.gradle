@@ -11,6 +11,10 @@ android {
         exclude 'META-INF/gradle/incremental.annotation.processors'
     }
 
+    viewBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.example.libraryapp"
         minSdk 24
@@ -49,4 +53,8 @@ dependencies {
     // Dagger Hilt
     implementation 'com.google.dagger:hilt-android:2.38.1'
     implementation 'com.google.dagger:hilt-compiler:2.38.1'
+
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 }
