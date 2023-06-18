@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 class BooksRepositoryImpl(
     private val gutendexService: GutendexService
 ) : BooksRepository {
-    override fun getBooksList(page: String): Flow<BooksListDomainModel> = flow {
+    override fun getBooksList(page: String?): Flow<BooksListDomainModel> = flow {
         val response = gutendexService.getBooksList(page).mapToDomain()
         emit(response)
     }
