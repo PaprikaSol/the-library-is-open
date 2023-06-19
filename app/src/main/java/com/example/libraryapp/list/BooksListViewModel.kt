@@ -32,8 +32,7 @@ class BooksListViewModel @Inject constructor(
                         subject = "subject$bookId",
                         author = PersonDomainModel(
                             name = "name$bookId",
-                            birthYear = "birthYear$bookId",
-                            deathYear = "deathYear$bookId"
+                            lifeDuration = "lifeduration$bookId"
                         )
                     )
                 )

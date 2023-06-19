@@ -23,6 +23,5 @@ fun Book.mapToDomain() = BookDomainModel(
 
 fun Person.mapToDomain() = PersonDomainModel(
     name = name,
-    birthYear = DateUtils.formatYear(birthYear),
-    deathYear = DateUtils.formatYear(deathYear)
+    lifeDuration = DateUtils.getLifeDuration(birthYear, deathYear)
 )

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Books list screen  -->
     <dimen name="book_item_card_elevation">2dp</dimen>
     <dimen name="book_item_card_corner_radius">4dp</dimen>
     <dimen name="book_item_card_padding">16dp</dimen>
@@ -8,4 +9,17 @@
 
     <dimen name="title_font_size">14sp</dimen>
     <dimen name="author_font_size">12sp</dimen>
+
+    <!--  Book details screen  -->
+    <dimen name="book_details_title_margin_top">40dp</dimen>
+    <dimen name="book_details_icon_margin_top">20dp</dimen>
+    <dimen name="book_details_icon_height">150dp</dimen>
+    <dimen name="book_details_author_name_margin_top">40dp</dimen>
+    <dimen name="book_details_text_padding">16dp</dimen>
+
+    <dimen name="book_details_author_font_size">16sp</dimen>
+    <dimen name="book_details_life_duration_font_size">14sp</dimen>
+    <dimen name="book_details_subject_font_size">16sp</dimen>
+
+
 </resources>
