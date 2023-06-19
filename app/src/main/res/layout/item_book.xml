@@ -1,0 +1,55 @@
+<!-- item_book.xml -->
+<!-- Define the layout for each item in the RecyclerView -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="@dimen/book_item_card_elevation"
+    app:cardCornerRadius="@dimen/book_item_card_corner_radius"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/book_item_card_padding">
+        <ImageView
+            android:id="@+id/bookIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_book"
+            app:tint="@color/design_default_color_primary"/>
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/title_font_size"
+            tools:text="Book title"
+            app:layout_constraintStart_toEndOf="@id/bookIcon"
+            app:layout_constraintEnd_toStartOf="@id/authorTextView"
+            android:layout_marginStart="@dimen/book_item_title_margin_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/authorTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="@dimen/author_font_size"
+            android:layout_marginStart="@dimen/book_item_author_margin_start"
+            tools:text="Author"
+            app:layout_constraintStart_toEndOf="@id/titleTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -18,7 +18,7 @@ fun Book.mapToDomain() = BookDomainModel(
     id = id,
     title = title,
     subject = subjects.firstOrNull() ?: "",
-    authors = authors.map { it.mapToDomain() }
+    author = authors.firstOrNull()?.mapToDomain()
 )
 
 fun Person.mapToDomain() = PersonDomainModel(

@@ -1,24 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_books_list.xml -->
+<!-- Define the layout for the BooksListFragment -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.libraryapp.list.BooksListFragment">
+    android:orientation="vertical">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="BOOKS LIST"
-        android:textSize="100dp" />
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_marginHorizontal="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-/>
-
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 </androidx.constraintlayout.widget.ConstraintLayout>
