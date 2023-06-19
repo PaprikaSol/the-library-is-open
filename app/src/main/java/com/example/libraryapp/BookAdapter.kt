@@ -9,14 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.BookDomainModel
 
 class BookAdapter(
-    private val books: List<BookDomainModel>,
     private val onBookClickListener: OnBookClickListener
 ) : RecyclerView.Adapter<BookAdapter.ViewHolder>() {
 
+    private val books = mutableListOf<BookDomainModel>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_book, parent, false)
         return ViewHolder(view)
     }
+
+    fun setData(data: List<BookDomainModel>) {
+        books.clear()
+        books.addAll(data)
+        notifyDataSetChanged()
+    }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val book = books[position]

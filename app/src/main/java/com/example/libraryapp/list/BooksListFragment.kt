@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.model.BookDomainModel
 import com.example.libraryapp.BookAdapter
 import com.example.libraryapp.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +28,7 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.On
         val view = inflater.inflate(R.layout.fragment_books_list, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        bookAdapter = BookAdapter(viewModel.getDummyData(), this)
+        bookAdapter = BookAdapter( this)
         recyclerView.adapter = bookAdapter
         return view
     }
@@ -34,6 +36,12 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.On
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBooksList()
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.booksList.collect {
+                bookAdapter.setData(it)
+            }
+        }
     }
 
     override fun onBookClicked(bookId: String) {

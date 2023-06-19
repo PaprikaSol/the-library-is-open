@@ -1,13 +1,14 @@
 package com.example.libraryapp.list
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.BookDomainModel
-import com.example.domain.model.PersonDomainModel
 import com.example.domain.useCase.BooksListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,30 +17,14 @@ class BooksListViewModel @Inject constructor(
     private val booksListUseCase: BooksListUseCase
 ) : ViewModel() {
 
+    private val _booksList = MutableStateFlow<List<BookDomainModel>>(listOf())
+    val booksList = _booksList.asStateFlow()
+
     fun getBooksList() {
         viewModelScope.launch {
-            val result = booksListUseCase().first()
-            val booksList = result.booksList
-            getDummyData()
+            booksListUseCase().collect { result ->
+                _booksList.update { result.booksList }
+            }
         }
-    }
-
-    fun getDummyData(): List<BookDomainModel> {
-        val booksList = mutableListOf<BookDomainModel>()
-        for (bookId in 1..3) {
-                booksList.add(
-                    BookDomainModel(
-                        id = "$bookId",
-                        title = "book$bookId",
-                        subject = "subject$bookId",
-                        author = PersonDomainModel(
-                            name = "name$bookId",
-                            lifeDuration = "lifeduration$bookId"
-                        )
-                    )
-                )
-        }
-        Log.d("BooksList", "getBooksList: $booksList")
-        return booksList
     }
 }
