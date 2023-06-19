@@ -4,10 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.BookDomainModel
 
-class BookAdapter(private val books: List<BookDomainModel>) : RecyclerView.Adapter<BookAdapter.ViewHolder>() {
+class BookAdapter(
+    private val books: List<BookDomainModel>,
+    private val onBookClickListener: OnBookClickListener
+) : RecyclerView.Adapter<BookAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_book, parent, false)
@@ -24,12 +28,20 @@ class BookAdapter(private val books: List<BookDomainModel>) : RecyclerView.Adapt
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val cardView: CardView = itemView.findViewById(R.id.cardView)
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val authorTextView: TextView = itemView.findViewById(R.id.authorTextView)
 
         fun bind(book: BookDomainModel) {
+            cardView.setOnClickListener {
+                onBookClickListener.onBookClicked(book.id)
+            }
             titleTextView.text = book.title
             authorTextView.text = book.author?.name
         }
+    }
+
+    interface OnBookClickListener {
+        fun onBookClicked(bookId: String)
     }
 }

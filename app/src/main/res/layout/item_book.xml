@@ -7,7 +7,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="@dimen/book_item_card_elevation"
     app:cardCornerRadius="@dimen/book_item_card_corner_radius"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:id="@+id/cardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

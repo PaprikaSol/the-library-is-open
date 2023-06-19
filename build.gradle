@@ -12,6 +12,10 @@ buildscript {
         mavenCentral()
     }
 
+    dependencies {
+        classpath libraries.navigation_safe_args
+    }
+
 }
 
 

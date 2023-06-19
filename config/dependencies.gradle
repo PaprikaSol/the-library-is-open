@@ -80,5 +80,7 @@ ext.libraries = [
 
         navigation_ui             : "androidx.navigation:navigation-ui-ktx:$versions.nav_version",
 
+        navigation_safe_args      : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.nav_version",
+
         constraintlayout          : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
 ]

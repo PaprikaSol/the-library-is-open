@@ -13,7 +13,7 @@ import com.example.libraryapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BooksListFragment : Fragment(R.layout.fragment_books_list) {
+class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.OnBookClickListener {
 
     private val viewModel: BooksListViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
@@ -26,7 +26,7 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list) {
         val view = inflater.inflate(R.layout.fragment_books_list, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        bookAdapter = BookAdapter(viewModel.getDummyData())
+        bookAdapter = BookAdapter(viewModel.getDummyData(), this)
         recyclerView.adapter = bookAdapter
         return view
     }
@@ -35,7 +35,13 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBooksList()
     }
-    private fun navigateToBookDetails() {
-        findNavController().navigate(R.id.action_booksListFragment_to_bookDetailsFragment)
+
+    override fun onBookClicked(bookId: String) {
+        navigateToBookDetails(bookId)
+    }
+    private fun navigateToBookDetails(bookId: String) {
+        val action =
+            BooksListFragmentDirections.actionBooksListFragmentToBookDetailsFragment(bookId)
+        findNavController().navigate(action)
     }
 }

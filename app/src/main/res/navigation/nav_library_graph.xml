@@ -18,5 +18,9 @@
         android:id="@+id/bookDetailsFragment"
         android:name="com.example.libraryapp.details.BookDetailsFragment"
         android:label="Book Details"
-        tools:layout="@layout/fragment_book_details" />
+        tools:layout="@layout/fragment_book_details" >
+        <argument
+            android:name="bookId"
+            app:argType="string" />
+    </fragment>
 </navigation>
