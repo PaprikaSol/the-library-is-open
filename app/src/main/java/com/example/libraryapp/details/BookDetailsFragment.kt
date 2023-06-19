@@ -7,13 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.libraryapp.BookAdapter
 import com.example.libraryapp.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BookDetailsFragment : Fragment(R.layout.fragment_book_details) {
 
     private val args: BookDetailsFragmentArgs by navArgs()
+
+    private val viewModel: BookDetailsViewModel by viewModels()
 
     lateinit var bookTitle: TextView
     lateinit var authorName: TextView
@@ -31,16 +36,19 @@ class BookDetailsFragment : Fragment(R.layout.fragment_book_details) {
         bookSubject = view.findViewById(R.id.subjectTextView)
         return view
     }
-
-    private val viewModel: BookDetailsViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bookId = args.bookId
+        viewModel.getBookDetails(bookId)
 
-        val bookDomainModel = viewModel.getDummyDetailsData()
-        bookTitle.text = bookDomainModel.title
-        authorName.text = bookDomainModel.author?.name
-        authorLifeDuration.text = bookDomainModel.author?.lifeDuration
-        bookSubject.text = bookDomainModel.subject
+        lifecycleScope.launchWhenStarted {
+            viewModel.bookDetails.collect { bookDomainModel ->
+                bookTitle.text = bookDomainModel?.title
+                authorName.text = bookDomainModel?.author?.name
+                authorLifeDuration.text = bookDomainModel?.author?.lifeDuration
+                bookSubject.text = bookDomainModel?.subject
+            }
+        }
+
     }
 }

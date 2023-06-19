@@ -44,10 +44,10 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.On
         }
     }
 
-    override fun onBookClicked(bookId: String) {
+    override fun onBookClicked(bookId: Int) {
         navigateToBookDetails(bookId)
     }
-    private fun navigateToBookDetails(bookId: String) {
+    private fun navigateToBookDetails(bookId: Int) {
         val action =
             BooksListFragmentDirections.actionBooksListFragmentToBookDetailsFragment(bookId)
         findNavController().navigate(action)

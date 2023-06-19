@@ -49,6 +49,6 @@ class BookAdapter(
     }
 
     interface OnBookClickListener {
-        fun onBookClicked(bookId: String)
+        fun onBookClicked(bookId: Int)
     }
 }
