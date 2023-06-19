@@ -7,6 +7,5 @@ import retrofit2.http.Query
 
 interface GutendexService {
     @GET(GET_BOOKS_LIST)
-    suspend fun getBooksList(@Query("page") page: String?): BooksListResponse
-
+    suspend fun getBooksList(@Query("page") page: Int?, @Query("id") id: Int?): BooksListResponse
 }
