@@ -30,4 +30,8 @@ dependencies {
 
     implementation libraries.retrofit
     implementation libraries.retrofit_json
+
+    // Okhttp3
+    implementation libraries.okhttp3
+    implementation libraries.okhttp3_interceptor
 }

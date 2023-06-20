@@ -39,6 +39,7 @@ ext.versions = [
         hilt            : '2.42',
 
         constraintlayout: '2.1.4',
+        okhttp3         : '4.9.3',
 
         // https://github.com/square/retrofit
         retrofit        : '2.9.0',
@@ -51,18 +52,13 @@ ext.versions = [
 
 ext.libraries = [
         kotlin_gradle_plugin      : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
-
         android_core_ktx          : "androidx.core:core-ktx:$versions.android_core",
         app_compat                : "androidx.appcompat:appcompat:$versions.app_compat",
-
         multidex                  : "androidx.multidex:multidex:$versions.multidex",
-
         material                  : "com.google.android.material:material:$versions.material",
-
         // Kotlin coroutines - https://github.com/Kotlin/kotlinx.coroutines
         kotlinx_coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
         kotlinx_coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
-
         // Hilt -  https://dagger.dev/hilt/gradle-setup
         // https://developer.android.com/training/dependency-injection/hilt-android
         hilt_android              : "com.google.dagger:hilt-android:$versions.hilt",
@@ -70,17 +66,13 @@ ext.libraries = [
         hilt_android_kapt         : "com.google.dagger:hilt-android-compiler:$versions.hilt",
         // Injection for non-android modules
         javax_inject              : "javax.inject:javax.inject:$versions.java_inject",
-
         retrofit                  : "com.squareup.retrofit2:retrofit:$versions.retrofit",
         retrofit_json             : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
-
-
         /** Navigation lib - https://developer.android.com/guide/navigation/navigation-getting-started **/
         navigation_fragment       : "androidx.navigation:navigation-fragment-ktx:$versions.nav_version",
-
         navigation_ui             : "androidx.navigation:navigation-ui-ktx:$versions.nav_version",
-
         navigation_safe_args      : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.nav_version",
-
         constraintlayout          : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+        okhttp3                   : "com.squareup.okhttp3:okhttp:$versions.okhttp3",
+        okhttp3_interceptor       : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3"
 ]
