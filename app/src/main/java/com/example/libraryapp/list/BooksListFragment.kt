@@ -9,17 +9,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.model.BookDomainModel
-import com.example.libraryapp.BookAdapter
 import com.example.libraryapp.R
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.OnBookClickListener {
+class BooksListFragment : Fragment(R.layout.fragment_books_list),
+    BooksViewHolder.OnBookClickListener {
 
     private val viewModel: BooksListViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
-    private lateinit var bookAdapter: BookAdapter
+    private lateinit var booksAdapter: BooksAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,18 +29,17 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.On
         val view = inflater.inflate(R.layout.fragment_books_list, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        bookAdapter = BookAdapter( this)
-        recyclerView.adapter = bookAdapter
+        booksAdapter = BooksAdapter(this)
+        recyclerView.adapter = booksAdapter
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getBooksList()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.booksList.collect {
-                bookAdapter.setData(it)
+        lifecycleScope.launch {
+            viewModel.getPagerFlow().collectLatest { pagingData ->
+                booksAdapter.submitData(lifecycle, pagingData)
             }
         }
     }
@@ -47,9 +47,11 @@ class BooksListFragment : Fragment(R.layout.fragment_books_list), BookAdapter.On
     override fun onBookClicked(bookId: Int) {
         navigateToBookDetails(bookId)
     }
+
     private fun navigateToBookDetails(bookId: Int) {
         val action =
             BooksListFragmentDirections.actionBooksListFragmentToBookDetailsFragment(bookId)
         findNavController().navigate(action)
     }
 }
+

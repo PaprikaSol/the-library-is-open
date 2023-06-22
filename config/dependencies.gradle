@@ -47,6 +47,7 @@ ext.versions = [
         java_inject     : '1',
 
         nav_version     : '2.5.3',
+        paging_version          : '3.1.1'
 ]
 
 
@@ -74,5 +75,6 @@ ext.libraries = [
         navigation_safe_args      : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.nav_version",
         constraintlayout          : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
         okhttp3                   : "com.squareup.okhttp3:okhttp:$versions.okhttp3",
-        okhttp3_interceptor       : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3"
+        okhttp3_interceptor       : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3",
+        paging                    : "androidx.paging:paging-runtime-ktx:$versions.paging_version"
 ]

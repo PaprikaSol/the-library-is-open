@@ -8,6 +8,6 @@ import javax.inject.Inject
 class BooksListUseCase @Inject constructor(
     private val booksRepository: BooksRepository
 ) {
-    operator fun invoke(page: Int? = null): Flow<BooksListDomainModel> =
+    operator fun invoke(page: String? = null): Flow<BooksListDomainModel> =
         booksRepository.getBooksList(page)
 }

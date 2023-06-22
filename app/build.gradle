@@ -58,10 +58,13 @@ dependencies {
 
     kapt libraries.hilt_android_kapt
 
-    //Navigation
+    // Navigation
     implementation libraries.navigation_fragment
     implementation libraries.navigation_ui
 
+    // Constraint Layout
     implementation libraries.constraintlayout
 
+    // Pagination
+    implementation libraries.paging
 }

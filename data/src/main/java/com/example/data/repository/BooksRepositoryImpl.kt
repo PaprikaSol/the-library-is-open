@@ -11,12 +11,14 @@ import kotlinx.coroutines.flow.flow
 class BooksRepositoryImpl(
     private val gutendexService: GutendexService
 ) : BooksRepository {
-    override fun getBooksList(page: Int?): Flow<BooksListDomainModel> = flow {
-        val booksListDomainModel = gutendexService.getBooksList(page, null).mapToDomain()
+    override fun getBooksList(page: String?): Flow<BooksListDomainModel> = flow {
+        val booksListDomainModel =
+            gutendexService.getBooksList(page = page, ids = null).mapToDomain()
         emit(booksListDomainModel)
     }
+
     override fun getBookDetails(id: Int): Flow<BookDomainModel?> = flow {
-        val response = gutendexService.getBooksList(null, id).mapToDomain()
+        val response = gutendexService.getBooksList(page = null, ids = listOf(id)).mapToDomain()
         val bookDomainModel = response.booksList.firstOrNull()
         emit(bookDomainModel)
     }

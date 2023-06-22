@@ -5,6 +5,6 @@ import com.example.domain.model.BooksListDomainModel
 import kotlinx.coroutines.flow.Flow
 
 interface BooksRepository {
-    fun getBooksList(page: Int?): Flow<BooksListDomainModel>
+    fun getBooksList(page: String?): Flow<BooksListDomainModel>
     fun getBookDetails(id: Int): Flow<BookDomainModel?>
 }
