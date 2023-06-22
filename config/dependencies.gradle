@@ -5,18 +5,18 @@
 
 
 ext.versions = [
-        min_sdk         : 23,
-        compile_sdk     : 33,
-        target_sdk      : 33,
-        build_tools     : '30.0.2',
+        min_sdk                  : 23,
+        compile_sdk              : 33,
+        target_sdk               : 33,
+        build_tools              : '30.0.2',
 
         // replace with the latest (stable) version: https://github.com/JetBrains/kotlin/releases/latest
         // https://kotlinlang.org/docs/releases.html#release-details
-        kotlin          : "${kotlin_version}",
-        java            : JavaVersion.VERSION_11,
+        kotlin                   : "${kotlin_version}",
+        java                     : JavaVersion.VERSION_11,
 
         // https://developer.android.com/studio/build/multidex
-        multidex        : '2.0.1',
+        multidex                 : '2.0.1',
 
         // https://developer.android.com/studio/releases/gradle-plugin?buildsystem=ndk-bu   ild#7-1-0
         //  Note: 7.1.0 needs min 7.2 gradle
@@ -24,30 +24,35 @@ ext.versions = [
 
         // https://github.com/Kotlin/kotlinx.coroutines
         // https://kotlinlang.org/docs/kmm-concurrency-and-coroutines.html#coroutines
-        coroutines      : '1.6.4',
+        coroutines               : '1.6.4',
 
         // https://developer.android.com/jetpack/androidx/releases/core
-        android_core    : '1.7.0',
+        android_core             : '1.7.0',
 
         // https://developer.android.com/jetpack/androidx/releases/appcompat
-        app_compat      : '1.6.1',
+        app_compat               : '1.6.1',
 
         // https://github.com/material-components/material-components-android/releases
-        material        : '1.4.0',
+        material                 : '1.4.0',
 
         // Hilt - https://dagger.dev/hilt/gradle-setup
-        hilt            : '2.42',
+        hilt                     : '2.42',
 
-        constraintlayout: '2.1.4',
-        okhttp3         : '4.9.3',
+        constraintlayout         : '2.1.4',
+        okhttp3                  : '4.9.3',
 
         // https://github.com/square/retrofit
-        retrofit        : '2.9.0',
+        retrofit                 : '2.9.0',
 
-        java_inject     : '1',
+        java_inject              : '1',
 
-        nav_version     : '2.5.3',
-        paging_version          : '3.1.1'
+        nav_version              : '2.5.3',
+        paging_version           : '3.1.1',
+        junit_version            : '4.13.2',
+        mockito_version          : '3.12.4',
+        mockk_version            : '1.12.0',
+        arch_core_test_version: '2.1.0',
+        test_core_version        : '1.4.0'
 ]
 
 
@@ -76,5 +81,12 @@ ext.libraries = [
         constraintlayout          : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
         okhttp3                   : "com.squareup.okhttp3:okhttp:$versions.okhttp3",
         okhttp3_interceptor       : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3",
-        paging                    : "androidx.paging:paging-runtime-ktx:$versions.paging_version"
+        paging                    : "androidx.paging:paging-runtime-ktx:$versions.paging_version",
+        junit                     : "junit:junit:$versions.junit_version",
+        mockito                   : "org.mockito:mockito-core:$versions.mockito_version",
+        mockk                     : "io.mockk:mockk:$versions.mockk_version",
+        coroutines_test           : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines",
+        arch_core_test            : "androidx.arch.core:core-testing:$versions.arch_core_test_version",
+        test_core                 : "androidx.test:core-ktx:$versions.test_core_version",
+        paging_common             : "androidx.paging:paging-common-ktx:$versions.paging_version"
 ]

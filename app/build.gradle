@@ -55,7 +55,6 @@ dependencies {
     // Hilt
     kapt libraries.hilt_kapt
     implementation libraries.hilt_android
-
     kapt libraries.hilt_android_kapt
 
     // Navigation
@@ -67,4 +66,24 @@ dependencies {
 
     // Pagination
     implementation libraries.paging
+
+    // Unit tests
+    testImplementation libraries.junit
+
+    // Mockito
+    testImplementation libraries.mockito
+
+    // MockK
+    testImplementation libraries.mockk
+
+    // Kotlin Coroutines Test
+    testImplementation libraries.coroutines_test
+
+    // AndroidX Test
+    testImplementation libraries.test_core
+    testImplementation libraries.arch_core_test
+
+    // AndroidX Paging
+    testImplementation libraries.paging_common
 }
+

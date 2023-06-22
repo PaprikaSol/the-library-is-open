@@ -3,8 +3,10 @@ package com.example.domain.utils
 import kotlin.math.abs
 
 object DateUtils {
-    fun getLifeDuration(birthYear: Int?, deathYear: Int?): String =
-        "${formatYear(birthYear)}-${formatYear(deathYear)}"
+    fun getLifeDuration(birthYear: Int?, deathYear: Int?): String {
+        return if (birthYear == null && deathYear == null) ""
+        else "${formatYear(birthYear)}-${formatYear(deathYear)}"
+    }
 
     private fun formatYear(year: Int?): String {
         if (year == null) return ""

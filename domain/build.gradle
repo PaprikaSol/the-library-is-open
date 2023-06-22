@@ -17,7 +17,8 @@ dependencies {
 
     kapt libraries.hilt_kapt
     implementation libraries.hilt_android
-
     kapt libraries.hilt_android_kapt
 
+    testImplementation libraries.junit
+    testImplementation libraries.mockito
 }
